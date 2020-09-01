@@ -1,0 +1,10 @@
+aws-cdk.core
+
+aws-cdk.aws_lambda
+aws-cdk.aws_iam
+aws-cdk.aws_apigateway
+aws-cdk.aws_dynamodb
+
+boto3
+botocore
+pytest

@@ -1,0 +1,177 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Announcements",
+    "version": "1.0.0",
+    "description": "This is a server for Announcement management.",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://yy83kf9zq2.execute-api.us-west-2.amazonaws.com/prod/"
+    }
+  ],
+  "paths": {
+    "/announcement": {
+      "get": {
+        "description": "Get all announcements",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/plimit"
+          },
+          {
+            "$ref": "#/components/parameters/poffset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned all announcements",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Something wrong",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "description": "Add a new announcement",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Announcement"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully added an Announcement",
+            "content": {}
+          },
+          "default": {
+            "description": "Something wrong",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Announcement": {
+        "required": [
+          "atitle",
+          "adescription",
+          "adate",
+          "astatus"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "atitle": {
+            "type": "string",
+            "example": "Welcome"
+          },
+          "adescription": {
+            "type": "string",
+            "example": "Welcome to the website"
+          },
+          "adate": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-08-22T00:00:00.000Z"
+          },
+          "astatus": {
+            "type": "string",
+            "description": "Status of Announcement",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          }
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      }
+    },
+    "parameters": {
+      "plimit": {
+        "name": "limit",
+        "in": "query",
+        "description": "Limits the number of items on a page",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "poffset": {
+        "name": "offset",
+        "in": "query",
+        "description": "Specifies the page number to be displayed",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
