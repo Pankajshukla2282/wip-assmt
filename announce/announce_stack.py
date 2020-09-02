@@ -34,24 +34,13 @@ class AnnounceStack(core.Stack):
             assumed_by=iam.ServicePrincipal("apigateway.amazonaws.com"),
         )
 
-        #Passing table name to Lambda Function
-        announce_lambda.add_environment("TABLE_NAME", table.table_name)
-        
-        # grant permission to lambda to write to table
-        table.grant_write_data(announce_lambda)
-        
-        # grant permission to lambda to read from table
-        table.grant_read_data(announce_lambda)
-
-        # grant permission to api to invoke lambda function
-        announce_lambda.grant_invoke(api_role)
-
         #Create an Lambda Rest API
         base_api = apigw.LambdaRestApi(self, 'AnnounceApiGW',
             handler=announce_lambda,
             rest_api_name='Announcements',
             description="This is a server for Announcement management.",
             proxy=False,
+            deploy=True,
         )
 
         #Create API Integration Response object
@@ -62,7 +51,7 @@ class AnnounceStack(core.Stack):
                 "method.response.header.Content-Type": "'application/json'",
                 "method.response.header.Access-Control-Allow-Origin": "'*'",
                 "method.response.header.Access-Control-Allow-Credentials": "'false'",
-                "method.response.header.Access-Control-Allow-Headers": "'Postman-Token,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Headers": "'Postman-Token,Host,x-apigw-api-id,x-api-key,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
                 "method.response.header.Access-Control-Allow-Methods": "'GET,POST'"
            },
         )
@@ -130,7 +119,7 @@ class AnnounceStack(core.Stack):
 
         #Create POST method for "announcement" resource
         announce_post = api_resource.add_method("POST", lambda_integration,
-            api_key_required=False,
+            api_key_required=True,
             request_models={
                 "application/json": announce_model,
             },
@@ -167,7 +156,7 @@ class AnnounceStack(core.Stack):
 
         #Create GET method for "announcement" resource
         announce_get = api_resource.add_method("GET", lambda_integration,
-            api_key_required=False,
+            api_key_required=True,
             method_responses=[{
                 #Successful
                 "statusCode": "200",
@@ -210,8 +199,8 @@ class AnnounceStack(core.Stack):
             name="Easy",
             api_key=api_req_key,
             throttle={
-                "rate_limit": 10,
-                "burst_limit": 2
+                "rate_limit": 100,
+                "burst_limit": 5
             }
         )
 
@@ -221,15 +210,27 @@ class AnnounceStack(core.Stack):
             throttle=[{
                 "method": announce_post,
                 "throttle": {
-                    "rate_limit": 5,
-                    "burst_limit": 2
+                    "rate_limit": 50,
+                    "burst_limit": 5
                 }
             }, {
                 "method": announce_get,
                 "throttle": {
-                    "rate_limit": 10,
-                    "burst_limit": 2
+                    "rate_limit": 100,
+                    "burst_limit": 5
                 }
             }]
         )
+
+        #Passing table name to Lambda Function
+        announce_lambda.add_environment("TABLE_NAME", table.table_name)
+        
+        # grant permission to lambda to write to table
+        table.grant_write_data(announce_lambda)
+        
+        # grant permission to lambda to read from table
+        table.grant_read_data(announce_lambda)
+
+        # grant permission to api to invoke lambda function
+        announce_lambda.grant_invoke(api_role)
 

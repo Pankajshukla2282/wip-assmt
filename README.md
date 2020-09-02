@@ -9,7 +9,10 @@
 		source .env/bin/activate
 			pip install -r requirements.txt
 			cdk bootstrap
-			cdk deploy announce
-			
-			Do the changes in files as per requirement
-			cdk destroy	
+3. Do the coding part, develop components for stack
+4. Deployment the stack
+	cdk deploy announce
+5. CloudFormation Template
+	Get it in cdk.out/announce.template.json
+6. Destroy the stack
+	cdk destroy	announce

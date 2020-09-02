@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "b72bd78b-a812-4369-8930-80bf63ae1369",
+		"name": "Announcements",
+		"description": "This is a server for Announcement management.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "announcement",
+			"item": [
+				{
+					"name": "/announcement",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "MyApiKeyThatIsAtLeast20Characters"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://1px61d5p2j.execute-api.us-east-2.amazonaws.com/{{basePath}}/announcement/",
+							"protocol": "https",
+							"host": [
+								"1px61d5p2j",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"{{basePath}}",
+								"announcement",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "400 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://1px61d5p2j.execute-api.us-east-2.amazonaws.com/{{basePath}}/announcement",
+									"protocol": "https",
+									"host": [
+										"1px61d5p2j",
+										"execute-api",
+										"us-east-2",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"{{basePath}}",
+										"announcement"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "200 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://1px61d5p2j.execute-api.us-east-2.amazonaws.com/{{basePath}}/announcement",
+									"protocol": "https",
+									"host": [
+										"1px61d5p2j",
+										"execute-api",
+										"us-east-2",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"{{basePath}}",
+										"announcement"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/announcement",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "MyApiKeyThatIsAtLeast20Characters"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"atitle\": \"sample announcement\",\n    \"astatus\": \"0\",\n    \"adate\": \"2020-09-02\",\n    \"adescription\": \"This is another sample announcement\"\n}"
+						},
+						"url": {
+							"raw": "https://1px61d5p2j.execute-api.us-east-2.amazonaws.com/{{basePath}}/announcement",
+							"protocol": "https",
+							"host": [
+								"1px61d5p2j",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"{{basePath}}",
+								"announcement"
+							],
+							"variable": [
+								{
+									"key": "basePath",
+									"value": "{{basePath}}",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "400 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"atitle\": \"<string>\",\n    \"astatus\": \"<string>\",\n    \"adate\": \"<string>\",\n    \"adescription\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "https://1px61d5p2j.execute-api.us-east-2.amazonaws.com/{{basePath}}/announcement",
+									"protocol": "https",
+									"host": [
+										"1px61d5p2j",
+										"execute-api",
+										"us-east-2",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"{{basePath}}",
+										"announcement"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "200 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"atitle\": \"<string>\",\n    \"astatus\": \"<string>\",\n    \"adate\": \"<string>\",\n    \"adescription\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "https://1px61d5p2j.execute-api.us-east-2.amazonaws.com/{{basePath}}/announcement",
+									"protocol": "https",
+									"host": [
+										"1px61d5p2j",
+										"execute-api",
+										"us-east-2",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"{{basePath}}",
+										"announcement"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "ea est eu",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2389c01e-7677-4238-a92c-e2d9c93c68cf",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "fca7a4c0-403e-4942-b7a5-033d9acd1f49",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "628c1400-c6e2-4e11-bb1b-d3da7fef028f",
+			"key": "basePath",
+			"value": "prod"
+		},
+		{
+			"id": "36d4d1db-ae35-46f7-b613-3cca33ee9f81",
+			"key": "baseUrl",
+			"value": "https://1px61d5p2j.execute-api.us-east-2.amazonaws.com/{{basePath}}"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

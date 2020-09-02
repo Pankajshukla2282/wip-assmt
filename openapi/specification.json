@@ -3,11 +3,11 @@
   "info": {
     "title": "Announcements",
     "description": "This is a server for Announcement management.",
-    "version": "2020-09-02T11:09:41Z"
+    "version": "2020-09-02T14:46:23Z"
   },
   "servers": [
     {
-      "url": "https://isv8eer3pi.execute-api.us-east-2.amazonaws.com/{basePath}",
+      "url": "https://1px61d5p2j.execute-api.us-east-2.amazonaws.com/{basePath}",
       "variables": {
         "basePath": {
           "default": "/prod"
@@ -81,7 +81,12 @@
             },
             "content": {}
           }
-        }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       },
       "post": {
         "requestBody": {
@@ -157,7 +162,12 @@
             },
             "content": {}
           }
-        }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       }
     }
   },
@@ -182,6 +192,13 @@
             "type": "string"
           }
         }
+      }
+    },
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "x-api-key",
+        "in": "header"
       }
     }
   }
