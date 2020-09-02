@@ -130,7 +130,7 @@ class AnnounceStack(core.Stack):
 
         #Create POST method for "announcement" resource
         announce_post = api_resource.add_method("POST", lambda_integration,
-            api_key_required=True,
+            api_key_required=False,
             request_models={
                 "application/json": announce_model,
             },
@@ -167,7 +167,7 @@ class AnnounceStack(core.Stack):
 
         #Create GET method for "announcement" resource
         announce_get = api_resource.add_method("GET", lambda_integration,
-            api_key_required=True,
+            api_key_required=False,
             method_responses=[{
                 #Successful
                 "statusCode": "200",
