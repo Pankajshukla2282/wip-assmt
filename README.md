@@ -1,6 +1,3 @@
-# wip-assmt
-Cloudformation assessment using API and Lambda
-
 
 # Welcome to your CDK Python project!
 
@@ -59,3 +56,21 @@ command.
  * `cdk docs`        open CDK documentation
 
 Enjoy!
+----------------------
+
+1. Installatins
+	a. NodeJs 10.3.0 or later
+	b. Install AWS CLI
+	c. Install AWS CDK CLI (npm install -g aws-cdk)
+2. Setup
+	a. aws configure
+	b. application
+		mkdir announce && cd announce
+		cdk init app --language python
+		source .env/bin/activate
+		.env\Scripts\activate.bat
+			pip install -r requirements.txt
+			cdk bootstrap
+			cdk deploy AnnouncementApp
+			Do the changes in files as per requirement
+			cdk destroy	

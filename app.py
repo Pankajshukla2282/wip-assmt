@@ -6,6 +6,6 @@ from announce.announce_stack import AnnounceStack
 
 
 app = core.App()
-AnnounceStack(app, "announce", env={'region': 'us-west-2'})
+AnnounceStack(app, "announce")
 
 app.synth()
